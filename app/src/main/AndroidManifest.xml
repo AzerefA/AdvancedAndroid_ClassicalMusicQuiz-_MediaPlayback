@@ -31,7 +31,7 @@
         </activity>
         <activity android:name=".QuizActivity"
             android:launchMode="singleTop"/>
-        <receiver android:name="android.support.v4.media.session.MediaButtonReceiver">
+        <receiver android:name=".QuizActivity$MediaReceiver">
                         <intent-filter>
                             <action android:name="android.intent.action.MEDIA_BUTTON" />
                         </intent-filter>

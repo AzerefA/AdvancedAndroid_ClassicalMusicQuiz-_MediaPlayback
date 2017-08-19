@@ -18,6 +18,8 @@ package com.example.android.classicalmusicquiz;
 
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -65,7 +67,7 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
     private int[] mButtonIDs = {R.id.buttonA, R.id.buttonB, R.id.buttonC, R.id.buttonD};
     private ArrayList<Integer> mRemainingSampleIDs;
     private ArrayList<Integer> mQuestionSampleIDs;
-    private MediaSessionCompat mMediaSession;
+    private static MediaSessionCompat mMediaSession;
     private PlaybackStateCompat.Builder mStateBuilder;
     private int mAnswerSampleID;
     private int mCurrentScore;
@@ -369,6 +371,17 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onPositionDiscontinuity() {
 
+    }
+
+    public static class MediaReceiver extends BroadcastReceiver {
+
+                public MediaReceiver() {
+                }
+
+         @Override
+        public void onReceive(Context context, Intent intent) {
+                        MediaButtonReceiver.handleIntent(mMediaSession, intent);
+                    }
     }
 
     private class MySessionCallback extends MediaSessionCompat.Callback {
