@@ -307,7 +307,9 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
     /**
      * Disables the buttons and changes the background colors to show the correct answer.
      */
+
     private void showCorrectAnswer() {
+        mPlayerView.setDefaultArtwork(Sample.getComposerArtBySampleID(this, mAnswerSampleID));
         for (int i = 0; i < mQuestionSampleIDs.size(); i++) {
             int buttonSampleID = mQuestionSampleIDs.get(i);
 
